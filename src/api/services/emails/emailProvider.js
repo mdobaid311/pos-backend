@@ -10,6 +10,7 @@ const { emailConfig } = require('../../../config/vars');
 const transporter = nodemailer.createTransport({
   port: emailConfig.port,
   host: emailConfig.host,
+  requireTLS: true,
   auth: {
     user: emailConfig.username,
     pass: emailConfig.password,
@@ -28,7 +29,7 @@ exports.sendPasswordReset = async (passwordResetObject) => {
   const email = new Email({
     views: { root: __dirname },
     message: {
-      from: 'support@your-app.com',
+      from: 'mdobaid311@gmail.com',
     },
     // uncomment below to send emails in development/test env:
     send: true,
@@ -37,12 +38,12 @@ exports.sendPasswordReset = async (passwordResetObject) => {
 
   email
     .send({
-      template: 'passwordReset',
+      
       message: {
         to: passwordResetObject.userEmail,
       },
       locals: {
-        productName: 'Test App',
+        productName: 'POS Application',
         // passwordResetUrl should be a URL to your app that displays a view where they
         // can enter a new password along with passing the resetToken in the params
         passwordResetUrl: `https://your-app/new-password/view?resetToken=${passwordResetObject.resetToken}`,
@@ -55,7 +56,7 @@ exports.sendPasswordChangeEmail = async (user) => {
   const email = new Email({
     views: { root: __dirname },
     message: {
-      from: 'support@your-app.com',
+      from: 'mdobaid311@gmail.com',
     },
     // uncomment below to send emails in development/test env:
     send: true,
@@ -69,7 +70,7 @@ exports.sendPasswordChangeEmail = async (user) => {
         to: user.email,
       },
       locals: {
-        productName: 'Test App',
+        productName: 'POS Application',
         name: user.name,
       },
     })

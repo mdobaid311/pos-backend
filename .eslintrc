@@ -1,19 +1,27 @@
-{
-  "rules": {
-    "no-console": 0,
-    "no-underscore-dangle": 0,
-    "no-unused-vars": ["error", { "argsIgnorePattern": "next" }],
-    "no-use-before-define": ["error", { "variables": false }],
-    "no-multi-str": 0
+module.exports = {
+  extends: [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+  ],
+  plugins: ["react", "react-hooks"],
+  parserOptions: {
+    ecmaVersion: 2020,
+    sourceType: "module",
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
-  "env": {
-    "node": true,
-    "mocha": true
+  env: {
+    browser: true,
+    es2020: true,
   },
-  "parserOptions": {
-    "ecmaVersion": 8
+  globals: {
+    process: true,
   },
-  "extends": [
-    "airbnb-base"
-  ]
-}
+  rules: {
+    "react/react-in-jsx-scope": "off",
+    "no-unused-vars": "off",
+    "react/prop-types": "off",
+  },
+};
